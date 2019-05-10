@@ -2,6 +2,7 @@ import sys
 import os
 from heapsort import heap_sort
 from heapsort_iterativo import heap_sort_interativo
+from radix_sort import countingSort
 from radix_sort import radixSort
 from utils import insere_randomico
 from gera_relatorio import gera_csv_resultado, plot_grafico
@@ -25,7 +26,7 @@ def seleciona_algoritmo(algoritmo, lista, tempo_ordenacao, nome_algoritmo):
         fim_cronometragem = time.time()
         tempo_cronometragem = fim_cronometragem - inicio_cronometagem
         tempo_ordenacao[nome_algoritmo][i] = tempo_cronometragem
-        insere_randomico(lista, 1000)    
+        insere_randomico(lista, 100)    
 
 if __name__ == '__main__':
     loop=True
@@ -49,7 +50,7 @@ if __name__ == '__main__':
             lista = random.sample(range(0,tamanho_vetor * 2), tamanho_vetor)
             seleciona_algoritmo(heap_sort, lista, tempo_ordenacao_python, 'heap_sort')
             seleciona_algoritmo(heap_sort_interativo, lista, tempo_ordenacao_python, 'heap_sort_iterativo')
-            # seleciona_algoritmo(radixSort, lista, tempo_ordenacao_python, 'radix_sort')
+            seleciona_algoritmo(radixSort, lista, tempo_ordenacao_python, 'radix_sort')
             plot_grafico(tempo_ordenacao_python)
         elif choice=='2':
             print("Opcao 1 foi escolhida")
